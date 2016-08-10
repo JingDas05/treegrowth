@@ -11,5 +11,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="treegrowth-common" />
+    <orderEntry type="module" module-name="treegrowth-model" />
+    <orderEntry type="module" module-name="treegrowth-service" />
   </component>
 </module>
