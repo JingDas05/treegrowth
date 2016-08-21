@@ -30,12 +30,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="treegrowth" target="1.5" />
-      <module name="treegrowth-common" target="1.5" />
-      <module name="treegrowth-configuration-server" target="1.5" />
-      <module name="treegrowth-model" target="1.5" />
-      <module name="treegrowth-service" target="1.5" />
-      <module name="treegrowth-web" target="1.5" />
+      <module name="treegrowth" target="1.6" />
+      <module name="treegrowth-common" target="1.6" />
+      <module name="treegrowth-configuration-server" target="1.6" />
+      <module name="treegrowth-model" target="1.6" />
+      <module name="treegrowth-service" target="1.6" />
+      <module name="treegrowth-web" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
