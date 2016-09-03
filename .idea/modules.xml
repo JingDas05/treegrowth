@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/treegrowth-configuration-server/treegrowth-configuration-server.iml" filepath="$PROJECT_DIR$/treegrowth-configuration-server/treegrowth-configuration-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-model/treegrowth-model.iml" filepath="$PROJECT_DIR$/treegrowth-model/treegrowth-model.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-service/treegrowth-service.iml" filepath="$PROJECT_DIR$/treegrowth-service/treegrowth-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/treegrowth-service-iml/treegrowth-service-iml.iml" filepath="$PROJECT_DIR$/treegrowth-service-iml/treegrowth-service-iml.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-web/treegrowth-web.iml" filepath="$PROJECT_DIR$/treegrowth-web/treegrowth-web.iml" />
     </modules>
   </component>

@@ -14,6 +14,7 @@
         <module>treegrowth-service</module>
         <module>treegrowth-web</module>
         <module>treegrowth-common</module>
+        <module>treegrowth-service-iml</module>
     </modules>
 
     <properties>
@@ -50,6 +51,12 @@
             <dependency>
                 <groupId>com.treegrowth</groupId>
                 <artifactId>treegrowth-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.treegrowth</groupId>
+                <artifactId>treegrowth-service-iml</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

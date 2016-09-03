@@ -26,6 +26,7 @@
         <module name="treegrowth-configuration-server" />
         <module name="treegrowth-model" />
         <module name="treegrowth-service" />
+        <module name="treegrowth-service-iml" />
         <module name="treegrowth-web" />
       </profile>
     </annotationProcessing>
@@ -35,6 +36,7 @@
       <module name="treegrowth-configuration-server" target="1.6" />
       <module name="treegrowth-model" target="1.6" />
       <module name="treegrowth-service" target="1.6" />
+      <module name="treegrowth-service-iml" target="1.6" />
       <module name="treegrowth-web" target="1.6" />
     </bytecodeTargetLevel>
   </component>
