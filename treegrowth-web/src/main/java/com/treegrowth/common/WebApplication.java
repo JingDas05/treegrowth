@@ -1,12 +1,11 @@
-package com.treegrowth.service.iml;
+package com.treegrowth.common;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@
-public class ServiceApplication {
+public class WebApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServiceApplication.class);
+        SpringApplication.run(WebApplication.class);
     }
 }
