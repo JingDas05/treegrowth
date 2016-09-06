@@ -1,4 +1,4 @@
-package com.treegrowth.common.configuration;
+package com.treegrowth.configuration;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
