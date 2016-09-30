@@ -6,7 +6,7 @@
     <file url="file://$PROJECT_DIR$/treegrowth-configuration-server" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/treegrowth-model" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/treegrowth-service" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/treegrowth-service-iml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/treegrowth-service-impl" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/treegrowth-web" charset="UTF-8" />
   </component>
 </project>

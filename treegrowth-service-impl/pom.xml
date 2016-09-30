@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>treegrowth-service-iml</artifactId>
+    <artifactId>treegrowth-service-impl</artifactId>
 
     <dependencies>
         <dependency>
@@ -19,22 +19,7 @@
 
         <dependency>
             <groupId>com.treegrowth</groupId>
-            <artifactId>treegrowth-model</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.treegrowth</groupId>
             <artifactId>treegrowth-service</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-config</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
