@@ -24,6 +24,7 @@
         <processorPath useClasspath="true" />
         <module name="treegrowth-common" />
         <module name="treegrowth-configuration-server" />
+        <module name="treegrowth-dao" />
         <module name="treegrowth-model" />
         <module name="treegrowth-service" />
         <module name="treegrowth-service-iml" />
@@ -32,14 +33,15 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="treegrowth" target="1.6" />
-      <module name="treegrowth-common" target="1.6" />
-      <module name="treegrowth-configuration-server" target="1.6" />
-      <module name="treegrowth-model" target="1.6" />
-      <module name="treegrowth-service" target="1.6" />
+      <module name="treegrowth" target="1.8" />
+      <module name="treegrowth-common" target="1.8" />
+      <module name="treegrowth-configuration-server" target="1.8" />
+      <module name="treegrowth-dao" target="1.8" />
+      <module name="treegrowth-model" target="1.8" />
+      <module name="treegrowth-service" target="1.8" />
       <module name="treegrowth-service-iml" target="1.6" />
-      <module name="treegrowth-service-impl" target="1.6" />
-      <module name="treegrowth-web" target="1.6" />
+      <module name="treegrowth-service-impl" target="1.8" />
+      <module name="treegrowth-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

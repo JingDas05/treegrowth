@@ -6,4 +6,13 @@ spring:
     mongodb:
       host: localhost
       database: treegrowth-web
-
+  datasource:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://localhost:5432/treegrowth
+      username: wusi
+      password: 666666
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update

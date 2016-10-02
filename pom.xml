@@ -15,17 +15,20 @@
         <module>treegrowth-web</module>
         <module>treegrowth-common</module>
         <module>treegrowth-service-impl</module>
+        <module>treegrowth-dao</module>
     </modules>
 
     <properties>
         <postgresql.version>9.4.1208.jre7</postgresql.version>
         <cloud.version>Brixton.SR4</cloud.version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.0.RELEASE</version>
+        <version>1.4.1.RELEASE</version>
     </parent>
 
     <dependencyManagement>
@@ -33,6 +36,12 @@
             <dependency>
                 <groupId>com.treegrowth</groupId>
                 <artifactId>treegrowth-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.treegrowth</groupId>
+                <artifactId>treegrowth-dao</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -86,6 +95,18 @@
 
 
     </dependencies>
+
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <encoding>${project.build.sourceEncoding}</encoding>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin>
+    </plugins>
 
 
 </project>

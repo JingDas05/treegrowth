@@ -1,10 +1,10 @@
 package com.treegrowth.service;
 
-import com.treegrowth.model.data.User;
-import org.springframework.stereotype.Service;
+import com.treegrowth.model.entity.User;
+import com.treegrowth.service.bo.UserDetailBasic;
 
 public interface UserService {
 
-    void create(User user);
+    UserDetailBasic create(User user);
 
 }
