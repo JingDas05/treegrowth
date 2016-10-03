@@ -15,7 +15,7 @@ public class PureUser {
     private String name;
 
     @NotNull
-    private String passWord;
+    private String password;
 
     @NotNull
     @Pattern(regexp = REGEX_MAIL)
@@ -29,12 +29,12 @@ public class PureUser {
         this.name = name;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -49,7 +49,7 @@ public class PureUser {
         User user = new User();
         user.setName(this.name);
         user.setEmail(this.email);
-        user.setPassword(this.passWord);
+        user.setPassword(this.password);
         return user;
     }
 

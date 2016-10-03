@@ -36,7 +36,7 @@ public class User extends Base {
     @Enumerated(STRING)
     private UserConfirmStatus userConfirmStatus;
 
-    @Column(name = "authorities", unique = true)
+    @Column(name = "authorities")
     @Convert(converter = UserAuthorityConverter.class)
     private EnumSet<Authority> authorities;
 

@@ -2,6 +2,9 @@ server:
   port: 8090
 
 spring:
+  jackson:
+    serialization-inclusion: non_null
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
   data:
     mongodb:
       host: localhost

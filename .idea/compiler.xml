@@ -39,7 +39,6 @@
       <module name="treegrowth-dao" target="1.8" />
       <module name="treegrowth-model" target="1.8" />
       <module name="treegrowth-service" target="1.8" />
-      <module name="treegrowth-service-iml" target="1.6" />
       <module name="treegrowth-service-impl" target="1.8" />
       <module name="treegrowth-web" target="1.8" />
     </bytecodeTargetLevel>
