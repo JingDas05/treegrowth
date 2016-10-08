@@ -20,7 +20,6 @@ import static com.treegrowth.model.security.Authority.USER;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Autowired
-    @Qualifier("customUserDetailService")
     private TgUserDetailsService tgUserDetailsService;
 
     @Autowired
@@ -38,9 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         http
             .authorizeRequests()
                 .antMatchers(
-                    "/api/**",
-                    "/login",
-                    "/login/**"
+                    "/api/**"
                 )
                 .permitAll()
                 .anyRequest().hasRole(USER.name())
@@ -48,6 +45,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
             .formLogin()
                 .loginProcessingUrl("/login")
                 .loginPage("/login")
+                .failureUrl("/login?error")
+                .usernameParameter("username")
+                .passwordParameter("password")
                 .and()
             .logout()
                 .permitAll()

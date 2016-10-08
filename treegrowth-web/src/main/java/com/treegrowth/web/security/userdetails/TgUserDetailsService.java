@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import static com.treegrowth.service.exception.NotFoundException.Message.USER;
 
-@Service("customUserDetailService")
+@Service()
 public class TgUserDetailsService implements UserDetailsService{
 
     @Autowired
