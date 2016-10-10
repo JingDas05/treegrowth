@@ -54,6 +54,10 @@ public class TgUserDetails implements UserDetails{
         return true;
     }
 
+    public String getId() {
+        return this.user.getId();
+    }
+
     public boolean equals(Object obj) {
         if (this==obj) return true;
         if (obj ==null) return false;

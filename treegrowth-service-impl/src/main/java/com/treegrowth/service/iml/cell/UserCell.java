@@ -20,7 +20,7 @@ public class UserCell {
     @Autowired
     private UserRepository userRepository;
 
-    @UserBasicCache
+   // @UserBasicCache
     public UserDetailBasic getBasic(String userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException(USER));
         UserDetailBasic userDetailBasic = new UserDetailBasic();

@@ -10,7 +10,7 @@ public interface UserService {
 
     UserDetailBasic create(User user);
 
-    UserDetailBasic get(String userId);
+    UserDetailBasic get(String loginUserId, String userId);
 
     Optional<UserDetail> findByEmail(String email);
 

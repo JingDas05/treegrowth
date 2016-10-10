@@ -6,6 +6,7 @@ import com.treegrowth.service.UserService;
 import com.treegrowth.service.bo.UserDetail;
 import com.treegrowth.service.bo.UserDetailBasic;
 import com.treegrowth.service.exception.ConflictException;
+import com.treegrowth.service.exception.ForbiddenException;
 import com.treegrowth.service.iml.cell.UserCell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +18,7 @@ import java.util.Optional;
 import static com.treegrowth.common.RegexPattern.REGEX_MAIL;
 import static com.treegrowth.common.utils.Conditions.checkState;
 import static com.treegrowth.service.exception.ConflictException.Message.USER_EXIST;
+import static com.treegrowth.service.exception.ForbiddenException.Message.USER_DETAIL;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,20 +34,22 @@ public class UserServiceImpl implements UserService {
     public UserDetailBasic create(User user) {
         checkState(!userRepository.findByEmail(user.getEmail()).isPresent(), () -> new ConflictException(USER_EXIST));
         user.setRegistrationTime(new Date());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(user.getPassword());
         User savedUser = userRepository.save(user);
         return new UserDetailBasic().from(savedUser);
     }
 
     @Override
-    public UserDetailBasic get(String userId) {
+    public UserDetailBasic get(String loginUserId, String userId) {
+        checkState(loginUserId.equals(userId), () -> new ForbiddenException(USER_DETAIL));
         return userCell.getBasic(userId);
     }
 
     @Override
     public Optional<UserDetail> findByEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);
-        if (user.isPresent()){
+        if (user.isPresent()) {
             User savedUser = user.get();
             UserDetail userDetail = new UserDetail();
             userDetail.setId(savedUser.getId());
