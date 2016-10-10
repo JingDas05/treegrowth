@@ -34,8 +34,7 @@ public class UserServiceImpl implements UserService {
     public UserDetailBasic create(User user) {
         checkState(!userRepository.findByEmail(user.getEmail()).isPresent(), () -> new ConflictException(USER_EXIST));
         user.setRegistrationTime(new Date());
-        //user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setPassword(user.getPassword());
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
         return new UserDetailBasic().from(savedUser);
     }
