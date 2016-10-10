@@ -31,6 +31,7 @@ public class UserApi {
         return userService.create(pureUser.convert());
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN') AND hasRole('ROLE_DBA')")
     @RequestMapping(value = "/{id}", method = GET)
     public UserDetailBasic get(@AuthenticationPrincipal TgUserDetails tgUserDetails, @PathVariable("id") String userId) {
         return userService.get(tgUserDetails.getId(),userId);
