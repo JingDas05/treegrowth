@@ -11,6 +11,9 @@ import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 @EnableCaching
@@ -25,13 +28,19 @@ public class CacheConfiguration extends CachingConfigurerSupport{
         JedisConnectionFactory redisConnectionFactory = new JedisConnectionFactory();
         redisConnectionFactory.setHostName("127.0.0.1");
         redisConnectionFactory.setPort(6379);
+        redisConnectionFactory.setUsePool(true);
         return redisConnectionFactory;
     }
 
     @Bean
     public RedisTemplate<Object,Object> redisTemplate(RedisConnectionFactory factory) {
         RedisTemplate<Object,Object> redisTemplate = new RedisTemplate<>();
+
+        RedisSerializer<Object> jdkSerializer = new JdkSerializationRedisSerializer();
+        RedisSerializer stringSerializer = new StringRedisSerializer();
+
         redisTemplate.setConnectionFactory(factory);
+        redisTemplate.setDefaultSerializer(jdkSerializer);
         return redisTemplate;
     }
 
