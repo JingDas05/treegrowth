@@ -27,6 +27,14 @@ spring:
       prefix: classpath:/templates/
       suffix: .html
 #      mode: HTML
+  mail:
+    host: smtp.exmail.qq.com
+    port: 25
+    username: wusi@qq.com
+    password: 01090109
+    properties:
+      mail.smtp.auth: true
+      mail.transport.protocol: smtp
 
 tree:
   cache:
