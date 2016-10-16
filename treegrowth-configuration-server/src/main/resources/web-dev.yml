@@ -1,8 +1,72 @@
 server:
-  port: 8100
+  port: 1111
 
 spring:
+  jackson:
+    serialization-inclusion: non_null
+    property-naming-strategy: CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES
   data:
     mongodb:
       host: localhost
-      database: treegrowth-web-dev
+      database: treegrowth-web
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/treegrowth
+    username: wusi
+    password: 666666
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  thymeleaf:
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+#      mode: HTML
+  mail:
+    host: smtp.yeah.net
+    port: 25
+    username: treegrowth@yeah.net
+    password: 333666tree
+    properties:
+      mail.smtp.auth: true
+      mail.transport.protocol: smtp
+
+tree:
+  cache:
+    expires:
+      cache:service:user:basic: 60
+    default-expire-time: 60
+
+security:
+  oauth2:
+    client:
+      client-id: acme
+      client-secret: acmesecret
+      scope: read,write
+      auto-approve-scopes: '.*'
+
+facebook:
+  client:
+    clientId: 233668646673605
+    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+github:
+  client:
+    clientId: bd1c0a783ccdd1c9b9e4
+    clientSecret: 1a9030fbca47a5b2c28e92f19050bb77824b5ad1
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
