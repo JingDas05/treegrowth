@@ -2,6 +2,7 @@ package com.treegrowth.service.iml;
 
 import com.treegrowth.dao.repository.UserRepository;
 import com.treegrowth.model.entity.User;
+import com.treegrowth.service.MailService;
 import com.treegrowth.service.UserService;
 import com.treegrowth.service.bo.UserDetail;
 import com.treegrowth.service.bo.UserDetailBasic;
@@ -29,6 +30,8 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserCell userCell;
+    @Autowired
+    private MailService mailService;
 
     @Override
     public UserDetailBasic create(User user) {
@@ -36,6 +39,7 @@ public class UserServiceImpl implements UserService {
         user.setRegistrationTime(new Date());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
+        mailService.send(savedUser);
         return new UserDetailBasic().from(savedUser);
     }
 

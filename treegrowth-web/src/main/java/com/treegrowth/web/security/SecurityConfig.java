@@ -46,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired
     private TgUserDetailsService tgUserDetailsService;
-    /**oauth2*/
-    @Autowired
-    private OAuth2ClientContext oAuth2ClientContext;
+//    /**oauth2*/
+//    @Autowired
+//    private OAuth2ClientContext oAuth2ClientContext;
 
     /**add passwordEncoder*/
     @Autowired
@@ -83,9 +83,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                     .permitAll()
                     .and()
                 .csrf()
-                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                    .and()
-                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+                    .disable();
+//                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+//                    .and()
+//                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
     }
 
     @Bean
@@ -103,74 +104,74 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
 /** oauth2 sso*/
 
-    @Bean
-    public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(filter);
-        registration.setOrder(-100);
-        return registration;
-    }
-
-    @Bean
-    @ConfigurationProperties("github")
-    public ClientResources github() {
-        return new ClientResources();
-    }
-
-    @Bean
-    @ConfigurationProperties("facebook")
-    public ClientResources facebook() {
-        return new ClientResources();
-    }
-
-    private Filter ssoFilter() {
-        CompositeFilter filter = new CompositeFilter();
-        List<Filter> filters = new ArrayList<>();
-        filters.add(ssoFilter(github(),"/login/github"));
-        filters.add(ssoFilter(facebook(),"/login/facebook"));
-        filter.setFilters(filters);
-        return filter;
-    }
-
-    private Filter ssoFilter(ClientResources client, String path) {
-        //filter
-        OAuth2ClientAuthenticationProcessingFilter oAuth2ClientAuthenticationFilter = new OAuth2ClientAuthenticationProcessingFilter(path);
-        //tokenService
-        UserInfoTokenServices tokenServices = new UserInfoTokenServices(client.getResource().getUserInfoUri(),client.getClient().getClientId());
-        //restTemplate
-        OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(client.getClient(),oAuth2ClientContext);
-        //use template
-        oAuth2ClientAuthenticationFilter.setRestTemplate(oAuth2RestTemplate);
-        tokenServices.setRestTemplate(oAuth2RestTemplate);
-        return oAuth2ClientAuthenticationFilter;
-    }
-
-    @Configuration
-    @EnableResourceServer
-    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-        @Override
-        public void configure(HttpSecurity http) throws Exception {
-            // @formatter:off
-            http.antMatcher("/me").authorizeRequests().anyRequest().authenticated();
-            // @formatter:on
-        }
-    }
-
-class ClientResources {
-
-        @NestedConfigurationProperty
-        private AuthorizationCodeResourceDetails client = new AuthorizationCodeResourceDetails();
-
-        @NestedConfigurationProperty
-        private ResourceServerProperties resource = new ResourceServerProperties();
-
-        public AuthorizationCodeResourceDetails getClient() {
-            return client;
-        }
-
-        public ResourceServerProperties getResource() {
-            return resource;
-        }
-}
+//    @Bean
+//    public FilterRegistrationBean oauth2ClientFilterRegistration(OAuth2ClientContextFilter filter) {
+//        FilterRegistrationBean registration = new FilterRegistrationBean();
+//        registration.setFilter(filter);
+//        registration.setOrder(-100);
+//        return registration;
+//    }
+//
+//    @Bean
+//    @ConfigurationProperties("github")
+//    public ClientResources github() {
+//        return new ClientResources();
+//    }
+//
+//    @Bean
+//    @ConfigurationProperties("facebook")
+//    public ClientResources facebook() {
+//        return new ClientResources();
+//    }
+//
+//    private Filter ssoFilter() {
+//        CompositeFilter filter = new CompositeFilter();
+//        List<Filter> filters = new ArrayList<>();
+//        filters.add(ssoFilter(github(),"/login/github"));
+//        filters.add(ssoFilter(facebook(),"/login/facebook"));
+//        filter.setFilters(filters);
+//        return filter;
+//    }
+//
+//    private Filter ssoFilter(ClientResources client, String path) {
+//        //filter
+//        OAuth2ClientAuthenticationProcessingFilter oAuth2ClientAuthenticationFilter = new OAuth2ClientAuthenticationProcessingFilter(path);
+//        //tokenService
+//        UserInfoTokenServices tokenServices = new UserInfoTokenServices(client.getResource().getUserInfoUri(),client.getClient().getClientId());
+//        //restTemplate
+//        OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(client.getClient(),oAuth2ClientContext);
+//        //use template
+//        oAuth2ClientAuthenticationFilter.setRestTemplate(oAuth2RestTemplate);
+//        tokenServices.setRestTemplate(oAuth2RestTemplate);
+//        return oAuth2ClientAuthenticationFilter;
+//    }
+//
+//    @Configuration
+//    @EnableResourceServer
+//    protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+//        @Override
+//        public void configure(HttpSecurity http) throws Exception {
+//            // @formatter:off
+//            http.antMatcher("/me").authorizeRequests().anyRequest().authenticated();
+//            // @formatter:on
+//        }
+//    }
+//
+//class ClientResources {
+//
+//        @NestedConfigurationProperty
+//        private AuthorizationCodeResourceDetails client = new AuthorizationCodeResourceDetails();
+//
+//        @NestedConfigurationProperty
+//        private ResourceServerProperties resource = new ResourceServerProperties();
+//
+//        public AuthorizationCodeResourceDetails getClient() {
+//            return client;
+//        }
+//
+//        public ResourceServerProperties getResource() {
+//            return resource;
+//        }
+//}
 
 }

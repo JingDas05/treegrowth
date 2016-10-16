@@ -28,10 +28,10 @@ spring:
       suffix: .html
 #      mode: HTML
   mail:
-    host: smtp.exmail.qq.com
+    host: smtp.sina.com
     port: 25
-    username: wusi@qq.com
-    password: 01090109
+    username: treegrowth@sina.com
+    password: 123456abc
     properties:
       mail.smtp.auth: true
       mail.transport.protocol: smtp
