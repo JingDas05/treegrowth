@@ -53,7 +53,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     /**add passwordEncoder*/
     @Autowired
     public void configGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(tgUserDetailsService);
         auth.authenticationProvider(authenticationProvider());
     }
 
@@ -90,16 +89,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(tgUserDetailsService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
 /** oauth2 sso*/

@@ -1,5 +1,6 @@
 package com.treegrowth.web.api;
 
+import com.sun.javafx.collections.MappingChange;
 import com.treegrowth.service.bo.UserDetailBasic;
 import com.treegrowth.web.security.userdetails.TgUserDetails;
 import com.treegrowth.web.vo.PureUser;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import java.util.Collections;
+import java.util.Map;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
@@ -26,15 +30,20 @@ public class UserApi {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(method = POST, consumes = APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = POST)
     public UserDetailBasic create(@Valid @RequestBody PureUser pureUser) {
         return userService.create(pureUser.convert());
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') AND hasRole('ROLE_DBA')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DBA')")
     @RequestMapping(value = "/{id}", method = GET)
     public UserDetailBasic get(@AuthenticationPrincipal TgUserDetails tgUserDetails, @PathVariable("id") String userId) {
         return userService.get(tgUserDetails.getId(),userId);
+    }
+
+    @RequestMapping(method = GET)
+    public Map angularGet() {
+        return Collections.singletonMap("content","hello oauth world");
     }
 
 }
