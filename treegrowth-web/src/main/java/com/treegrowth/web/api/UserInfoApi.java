@@ -7,7 +7,7 @@ import java.security.Principal;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@RestController
+//@RestController
 public class UserInfoApi {
 
     @RequestMapping({ "/user", "/me" })

@@ -50,6 +50,8 @@ security:
       scope: read,write
       auto-approve-scopes: '.*'
 
+#  All developers need to register their application before getting started.
+#  A registered OAuth application is assigned a unique Client ID and Client Secret.
 facebook:
   client:
     clientId: 233668646673605
