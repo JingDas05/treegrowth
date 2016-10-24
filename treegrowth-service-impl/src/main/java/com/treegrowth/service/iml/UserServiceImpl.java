@@ -4,10 +4,12 @@ import com.treegrowth.dao.repository.UserRepository;
 import com.treegrowth.model.entity.User;
 import com.treegrowth.service.MailService;
 import com.treegrowth.service.UserService;
+import com.treegrowth.service.bo.AmendedUser;
 import com.treegrowth.service.bo.UserDetail;
 import com.treegrowth.service.bo.UserDetailBasic;
 import com.treegrowth.service.exception.ConflictException;
 import com.treegrowth.service.exception.ForbiddenException;
+import com.treegrowth.service.exception.NotFoundException;
 import com.treegrowth.service.iml.cell.UserCell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,6 +22,7 @@ import static com.treegrowth.common.RegexPattern.REGEX_MAIL;
 import static com.treegrowth.common.utils.Conditions.checkState;
 import static com.treegrowth.service.exception.ConflictException.Message.USER_EXIST;
 import static com.treegrowth.service.exception.ForbiddenException.Message.USER_DETAIL;
+import static com.treegrowth.service.exception.NotFoundException.Message.USER;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -40,6 +43,20 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
         mailService.send(savedUser);
+        return new UserDetailBasic().from(savedUser);
+    }
+
+    @Override
+    public void delete(String userId) {
+        checkState(userRepository.findById(userId).isPresent(), () -> new NotFoundException(USER));
+        userRepository.delete(userId);
+    }
+
+    @Override
+    public UserDetailBasic update(String userId, AmendedUser amendedUser) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new NotFoundException(USER));
+        user.setName(amendedUser.getName());
+        User savedUser = userRepository.save(user);
         return new UserDetailBasic().from(savedUser);
     }
 

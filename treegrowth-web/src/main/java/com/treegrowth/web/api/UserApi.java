@@ -1,6 +1,6 @@
 package com.treegrowth.web.api;
 
-import com.sun.javafx.collections.MappingChange;
+import com.treegrowth.service.bo.AmendedUser;
 import com.treegrowth.service.bo.UserDetailBasic;
 import com.treegrowth.web.security.userdetails.TgUserDetails;
 import com.treegrowth.web.vo.PureUser;
@@ -16,12 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-import java.util.Collections;
-import java.util.Map;
-
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
 @RequestMapping("/api/users")
@@ -36,14 +31,19 @@ public class UserApi {
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_DBA')")
+    @RequestMapping(value = "/{id}", method = DELETE)
+    public void delete(@PathVariable("id") String userId) {
+        userService.delete(userId);
+    }
+
+
+    @RequestMapping(value = "/{id}", method = PUT)
+    public UserDetailBasic update(@PathVariable("id") String userId,@RequestBody AmendedUser amendedUser) {
+        return userService.update(userId,amendedUser);
+    }
+
     @RequestMapping(value = "/{id}", method = GET)
     public UserDetailBasic get(@AuthenticationPrincipal TgUserDetails tgUserDetails, @PathVariable("id") String userId) {
-        return userService.get(tgUserDetails.getId(),userId);
+        return userService.get(tgUserDetails.getId(), userId);
     }
-
-    @RequestMapping(method = GET)
-    public Map angularGet() {
-        return Collections.singletonMap("content","hello oauth world");
-    }
-
 }

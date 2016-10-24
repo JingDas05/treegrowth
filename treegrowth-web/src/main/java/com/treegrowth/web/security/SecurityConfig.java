@@ -39,9 +39,8 @@ import javax.servlet.Filter;
 import java.util.ArrayList;
 import java.util.List;
 
-//@EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
-@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableOAuth2Client
 @EnableAuthorizationServer
 @Order(6)
