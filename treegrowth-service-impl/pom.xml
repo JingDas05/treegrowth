@@ -11,6 +11,10 @@
 
     <artifactId>treegrowth-service-impl</artifactId>
 
+    <properties>
+        <es.version>2.4.0</es.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.treegrowth</groupId>
@@ -42,6 +46,25 @@
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>1.4.7</version>
+        </dependency>
+
+        <!--elasticsearch-->
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>${es.version}</version>
+        </dependency>
+
+        <!--kafka-->
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>0.10.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>0.10.1.0</version>
         </dependency>
 
     </dependencies>
