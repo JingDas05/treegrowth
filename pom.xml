@@ -16,6 +16,7 @@
         <module>treegrowth-common</module>
         <module>treegrowth-service-impl</module>
         <module>treegrowth-dao</module>
+        <module>treegrowth-message-quene</module>
     </modules>
 
     <properties>
