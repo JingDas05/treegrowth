@@ -2,6 +2,7 @@ package com.treegrowth.common.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,4 +44,16 @@ public class Json {
         }
         return null;
     }
+
+    public static String readNode(String content, String fieldName) {
+        try {
+            JsonNode jsonNode = objectMapper.readTree(content).get(fieldName);
+            return jsonNode == null ? null : jsonNode.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

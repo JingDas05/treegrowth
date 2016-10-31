@@ -41,6 +41,15 @@ tree:
     expires:
       cache:service:user:basic: 60
     default-expire-time: 60
+  location:
+    key: EIGBZ-WMIWF-M4TJ7
+    base-url: http://apis.map.qq.com
+    ip-location: '${tree.location.base-url}/ws/location/v1/ip?ip={ip}&key=${askdog.location.key}&output=json'
+    geo-location: '${tree.location.base-url}/ws/geocoder/v1/?location={lat},{lng}&key=${askdog.location.key}&get_poi={poi}&coord_type=5&output=json'
+    nearby-distance: 50 #kilometers
+    nearby-limit: 1000
+    rencent-limit: 100
+    rate-distance: 50 #kilometers
 
 security:
   oauth2:

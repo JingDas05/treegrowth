@@ -11,7 +11,7 @@ public class UserAuthorityConverter extends JsonTypeReferenceConverter<EnumSet<A
 
     {
         userConfirmStatuses = new TypeReference<EnumSet<Authority>>() {};
-    }
+}
 
     @Override
     protected TypeReference<EnumSet<Authority>> typeReference() {
