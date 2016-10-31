@@ -1,6 +1,7 @@
 package com.treegrowth.service.iml.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
@@ -22,6 +23,9 @@ public class CacheConfiguration extends CachingConfigurerSupport{
 
     @Autowired
     private ConfigParam configParam;
+
+    @Autowired
+    private RedisProperties redisProperties;
 
     @Bean
     public JedisConnectionFactory redisConnectionFactory() {
