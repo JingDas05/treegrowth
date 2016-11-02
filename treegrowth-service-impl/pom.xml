@@ -55,18 +55,6 @@
             <version>${es.version}</version>
         </dependency>
 
-        <!--kafka-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.kafka</groupId>-->
-            <!--<artifactId>kafka-clients</artifactId>-->
-            <!--<version>0.10.1.0</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.kafka</groupId>-->
-            <!--<artifactId>kafka-streams</artifactId>-->
-            <!--<version>0.10.1.0</version>-->
-        <!--</dependency>-->
-
         <!--qiniu-->
         <dependency>
             <groupId>com.qiniu</groupId>

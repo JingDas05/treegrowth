@@ -16,7 +16,7 @@
         <module>treegrowth-common</module>
         <module>treegrowth-service-impl</module>
         <module>treegrowth-dao</module>
-        <module>treegrowth-message-quene</module>
+        <module>treegrowth-message-queue</module>
     </modules>
 
     <properties>
@@ -67,6 +67,12 @@
             <dependency>
                 <groupId>com.treegrowth</groupId>
                 <artifactId>treegrowth-service-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.treegrowth</groupId>
+                <artifactId>treegrowth-message-queue</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

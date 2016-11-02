@@ -26,15 +26,15 @@ public class Config {
         return factory;
     }
 
-    @Bean
-    public Sender sender() {
-        return new Sender();
-    }
-
-    @Bean
-    public Receiver receiver() {
-        return new Receiver();
-    }
+//    @Bean
+//    public Sender sender() {
+//        return new Sender();
+//    }
+//
+//    @Bean
+//    public Receiver receiver() {
+//        return new Receiver();
+//    }
 
     @Bean
     public KafkaTemplate<Integer, String> kafkaTemplate() {

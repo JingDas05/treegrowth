@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: message
-  cloud:
-    config:
-      uri: http://localhost:0001/

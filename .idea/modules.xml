@@ -6,7 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/treegrowth-common/treegrowth-common.iml" filepath="$PROJECT_DIR$/treegrowth-common/treegrowth-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-configuration-server/treegrowth-configuration-server.iml" filepath="$PROJECT_DIR$/treegrowth-configuration-server/treegrowth-configuration-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-dao/treegrowth-dao.iml" filepath="$PROJECT_DIR$/treegrowth-dao/treegrowth-dao.iml" />
-      <module fileurl="file://$PROJECT_DIR$/treegrowth-message-quene/treegrowth-message-quene.iml" filepath="$PROJECT_DIR$/treegrowth-message-quene/treegrowth-message-quene.iml" />
+      <module fileurl="file://$PROJECT_DIR$/treegrowth-message-queue/treegrowth-message-queue.iml" filepath="$PROJECT_DIR$/treegrowth-message-queue/treegrowth-message-queue.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-model/treegrowth-model.iml" filepath="$PROJECT_DIR$/treegrowth-model/treegrowth-model.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-service/treegrowth-service.iml" filepath="$PROJECT_DIR$/treegrowth-service/treegrowth-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/treegrowth-service-impl/treegrowth-service-impl.iml" filepath="$PROJECT_DIR$/treegrowth-service-impl/treegrowth-service-impl.iml" />

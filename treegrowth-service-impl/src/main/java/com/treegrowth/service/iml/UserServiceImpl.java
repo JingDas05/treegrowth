@@ -1,6 +1,7 @@
 package com.treegrowth.service.iml;
 
 import com.treegrowth.dao.repository.UserRepository;
+import com.treegrowth.message.quene.cofiguration.Sender;
 import com.treegrowth.model.entity.User;
 import com.treegrowth.service.MailService;
 import com.treegrowth.service.UserService;
@@ -18,7 +19,6 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
-import static com.treegrowth.common.RegexPattern.REGEX_MAIL;
 import static com.treegrowth.common.utils.Conditions.checkState;
 import static com.treegrowth.service.exception.ConflictException.Message.USER_EXIST;
 import static com.treegrowth.service.exception.ForbiddenException.Message.USER_DETAIL;
@@ -35,6 +35,8 @@ public class UserServiceImpl implements UserService {
     private UserCell userCell;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private Sender sender;
 
     @Override
     public UserDetailBasic create(User user) {
@@ -63,6 +65,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetailBasic get(String loginUserId, String userId) {
         checkState(loginUserId.equals(userId), () -> new ForbiddenException(USER_DETAIL));
+        sender.sendMessage("tree.b", "获取用户信息");
         return userCell.getBasic(userId);
     }
 
