@@ -2,6 +2,7 @@ package com.treegrowth.service.iml;
 
 import com.treegrowth.dao.repository.UserRepository;
 import com.treegrowth.message.quene.cofiguration.Sender;
+import com.treegrowth.message.quene.core.MessagePayload;
 import com.treegrowth.model.entity.User;
 import com.treegrowth.service.MailService;
 import com.treegrowth.service.UserService;
@@ -65,8 +66,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetailBasic get(String loginUserId, String userId) {
         checkState(loginUserId.equals(userId), () -> new ForbiddenException(USER_DETAIL));
-        sender.sendMessage("tree.b", "获取用户信息");
-        return userCell.getBasic(userId);
+        UserDetailBasic userDetailBasic = userCell.getBasic(userId);
+
+        MessagePayload<UserDetailBasic> messagePayload = new MessagePayload<>();
+        messagePayload.setPayload(userDetailBasic);
+        messagePayload.setSendDate(new Date());
+
+        sender.sendMessage("tree.b", messagePayload);
+        return userDetailBasic;
     }
 
     @Override

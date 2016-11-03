@@ -28,7 +28,7 @@ public class KafkaSendAndReceiverTest {
     @Test
     public void testSimple() throws Exception {
 
-        sender.sendMessage("tree.a", "hello kafka world");
+        //sender.sendMessage("tree.a", "hello kafka world");
         receiver.getLatch().await(10000, TimeUnit.MILLISECONDS);
         assertThat(receiver.getLatch().getCount()).isEqualTo(0);
 

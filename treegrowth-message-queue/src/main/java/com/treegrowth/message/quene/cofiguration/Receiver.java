@@ -1,13 +1,16 @@
 package com.treegrowth.message.quene.cofiguration;
 
+import com.treegrowth.message.quene.core.MessagePayload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.CountDownLatch;
 
 @Service
+@Order
 public class Receiver {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
@@ -20,9 +23,9 @@ public class Receiver {
         latch.countDown();
     }
 
-    @KafkaListener(topics = "tree.b")
-    public void receiveUserMessage(String message) {
-        System.out.println("11111111111111111111111111111111" + message);
+    @KafkaListener(topics = "tree.b", containerFactory = "ConcurrentKafkaListenerContainerFactory")
+    public void receiveUserMessage(MessagePayload messagePayload) {
+        System.out.println("11111111111111111111111111111111" + messagePayload.getSendDate());
     }
 
     public CountDownLatch getLatch() {
