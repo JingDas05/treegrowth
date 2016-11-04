@@ -2,7 +2,8 @@ package com.treegrowth.service.iml;
 
 import com.treegrowth.dao.repository.UserRepository;
 import com.treegrowth.message.quene.cofiguration.Sender;
-import com.treegrowth.message.quene.core.MessagePayload;
+import com.treegrowth.message.quene.message.UserMessage;
+import com.treegrowth.message.quene.message.UserMessagePayload;
 import com.treegrowth.model.entity.User;
 import com.treegrowth.service.MailService;
 import com.treegrowth.service.UserService;
@@ -68,11 +69,13 @@ public class UserServiceImpl implements UserService {
         checkState(loginUserId.equals(userId), () -> new ForbiddenException(USER_DETAIL));
         UserDetailBasic userDetailBasic = userCell.getBasic(userId);
 
-        MessagePayload<UserDetailBasic> messagePayload = new MessagePayload<>();
-        messagePayload.setPayload(userDetailBasic);
-        messagePayload.setSendDate(new Date());
+        UserMessagePayload userMessagePayload = new UserMessagePayload();
+        userMessagePayload.setName(userDetailBasic.getName());
+        UserMessage userMessage = new UserMessage();
+        userMessage.setSendDate(new Date());
+        userMessage.setPayload(userMessagePayload);
 
-        sender.sendMessage("tree.b", messagePayload);
+        sender.sendMessage(userMessage);
         return userDetailBasic;
     }
 

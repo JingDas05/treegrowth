@@ -1,13 +1,15 @@
 package com.treegrowth.message.quene.core;
 
-import org.springframework.messaging.Message;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.MessageHeaders;
 
-import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-public class MessagePayload<T> implements Message<T>, Serializable {
-    private static final long serialVersionUID = 7981327491577050944L;
+public abstract class UserTopicMessage<T> implements CommonMessage<T> {
+
+    private static final long serialVersionUID = -1688113693438120635L;
 
     private T payload;
     private Date sendDate;
@@ -31,6 +33,9 @@ public class MessagePayload<T> implements Message<T>, Serializable {
 
     @Override
     public MessageHeaders getHeaders() {
-        return null;
+        Map<String, Object> headers = new HashMap<>();
+        headers.put(KafkaHeaders.TOPIC, "user");
+        headers.put(KafkaHeaders.PARTITION_ID, "a");
+        return new MessageHeaders(headers);
     }
 }
