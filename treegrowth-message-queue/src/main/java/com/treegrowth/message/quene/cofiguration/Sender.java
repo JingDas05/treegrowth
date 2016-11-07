@@ -19,7 +19,7 @@ public class Sender {
     @Autowired
     private KafkaTemplate<String, CommonMessage> kafkaTemplate;
 
-    public void sendMessage(Message<? extends CommonMessage> message) {
+    public void sendMessage(Message message) {
         // the KafkaTemplate provides asynchronous send methods returning a Future
         ListenableFuture<SendResult<String, CommonMessage>> future = kafkaTemplate.send(message);
 
