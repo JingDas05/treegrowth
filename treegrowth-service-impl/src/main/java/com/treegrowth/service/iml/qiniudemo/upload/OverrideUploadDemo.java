@@ -1,4 +1,4 @@
-package com.treegrowth.service.iml;
+package com.treegrowth.service.iml.qiniudemo.upload;
 
 import com.qiniu.common.QiniuException;
 import com.qiniu.http.Response;
@@ -7,37 +7,38 @@ import com.qiniu.util.Auth;
 
 import java.io.IOException;
 
-public class UploadDemo {
+public class OverrideUploadDemo {
 
     //设置好账号的ACCESS_KEY和SECRET_KEY
-    private String ACCESS_KEY = "Access_Key";
-    private String SECRET_KEY = "Secret_Key";
+    String ACCESS_KEY = "Access_Key";
+    String SECRET_KEY = "Secret_Key";
     //要上传的空间
-    private String bucketname = "Bucket_Name";
+    String bucketname = "Bucket_Name";
     //上传到七牛后保存的文件名
-    private String key = "my-java.png";
+    String key = "my-java.png";
     //上传文件的路径
-    private String FilePath = "/.../...";
+    String filePath = "/.../...";
 
     //密钥配置
-    private Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
+    Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
     //创建上传对象
-    private UploadManager uploadManager = new UploadManager();
+    UploadManager uploadManager = new UploadManager();
 
-    //简单上传，使用默认策略，只需要设置上传的空间名就可以了
+    // 覆盖上传
     public String getUpToken(){
-        return auth.uploadToken(bucketname);
+        //<bucket>:<key>，表示只允许用户上传指定key的文件。在这种格式下文件默认允许“修改”，已存在同名资源则会被本次覆盖。
+        return auth.uploadToken(bucketname, key);
     }
 
     public void upload() throws IOException {
         try {
-            //调用put方法上传
-            Response res = uploadManager.put(FilePath, key, getUpToken());
+            //调用put方法上传，这里指定的key和上传策略中的key要一致
+            Response res = uploadManager.put(filePath, key, getUpToken());
             //打印返回的信息
             System.out.println(res.bodyString());
         } catch (QiniuException e) {
             Response r = e.response;
-            // 请求失败时打印的异常的信息
+            // 请求失败时打印的异常信息
             System.out.println(r.toString());
             try {
                 //响应的文本信息
@@ -49,7 +50,7 @@ public class UploadDemo {
     }
 
     public static void main(String args[]) throws IOException{
-        new UploadDemo().upload();
+        new OverrideUploadDemo().upload();
     }
 
 }
