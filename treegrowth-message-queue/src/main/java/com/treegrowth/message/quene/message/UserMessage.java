@@ -1,9 +1,21 @@
 package com.treegrowth.message.quene.message;
 
-import com.treegrowth.message.quene.core.UserTopicMessage;
+public class UserMessage {
 
-public class UserMessage extends UserTopicMessage<UserMessagePayload> {
+    private String name;
 
-    private static final long serialVersionUID = -6786009521052667676L;
+    public UserMessage() {
+    }
 
+    public UserMessage(String _name) {
+        this.name = _name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

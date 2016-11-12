@@ -1,8 +1,8 @@
 package com.treegrowth.service.iml;
 
 import com.treegrowth.dao.repository.UserRepository;
+import com.treegrowth.message.quene.core.Sender;
 import com.treegrowth.message.quene.message.UserMessage;
-import com.treegrowth.message.quene.message.UserMessagePayload;
 import com.treegrowth.model.entity.User;
 import com.treegrowth.service.MailService;
 import com.treegrowth.service.UserService;
@@ -14,6 +14,7 @@ import com.treegrowth.service.exception.ForbiddenException;
 import com.treegrowth.service.exception.NotFoundException;
 import com.treegrowth.service.iml.cell.UserCell;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +37,8 @@ public class UserServiceImpl implements UserService {
     private UserCell userCell;
     @Autowired
     private MailService mailService;
+    @Autowired
+    private Sender sender;
 
     @Override
     public UserDetailBasic create(User user) {
@@ -66,11 +69,9 @@ public class UserServiceImpl implements UserService {
         checkState(loginUserId.equals(userId), () -> new ForbiddenException(USER_DETAIL));
         UserDetailBasic userDetailBasic = userCell.getBasic(userId);
 
-        UserMessagePayload userMessagePayload = new UserMessagePayload();
-        userMessagePayload.setName(userDetailBasic.getName());
         UserMessage userMessage = new UserMessage();
-        userMessage.setSendDate(new Date());
-        userMessage.setPayload(userMessagePayload);
+        userMessage.setName(userDetailBasic.getEmail());
+        sender.send(new GenericMessage<>(userMessage));
 
         return userDetailBasic;
     }

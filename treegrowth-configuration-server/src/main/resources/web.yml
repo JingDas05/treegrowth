@@ -85,7 +85,4 @@ github:
 kafka:
   broker:
     address: localhost:9092
-  zookeeper:
-    connect: localhost:2181
-  topic: wu.topic
-  messageKey: wu.key
+  topic: treegrowth
