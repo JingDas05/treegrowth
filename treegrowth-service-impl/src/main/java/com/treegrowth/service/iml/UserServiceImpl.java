@@ -14,7 +14,9 @@ import com.treegrowth.service.exception.ForbiddenException;
 import com.treegrowth.service.exception.NotFoundException;
 import com.treegrowth.service.iml.cell.UserCell;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.support.GenericMessage;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -71,8 +73,9 @@ public class UserServiceImpl implements UserService {
 
         UserMessage userMessage = new UserMessage();
         userMessage.setName(userDetailBasic.getEmail());
-        sender.send(new GenericMessage<>(userMessage));
-
+        sender.send(MessageBuilder.withPayload(userMessage)
+                .setHeader(KafkaHeaders.TOPIC,"treegrowth.a")
+                .build());
         return userDetailBasic;
     }
 

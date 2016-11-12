@@ -31,7 +31,6 @@ public class Config {
     public KafkaTemplate<String, String> kafkaTemplate() {
         KafkaTemplate<String, String> template = new KafkaTemplate<>(producerFactory());
         template.setMessageConverter(new StringJsonMessageConverter());
-        template.setDefaultTopic(topic);
         return template;
     }
 

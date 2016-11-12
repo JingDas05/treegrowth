@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class Receiver {
 
-    @KafkaListener(topics = "${kafka.topic}", containerFactory = "jsonKafkaListenerContainerFactory")
+    @KafkaListener(topics = "treegrowth.a", containerFactory = "jsonKafkaListenerContainerFactory")
     public void receiveUserMessage(UserMessage userMessage) {
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + userMessage.getName());
         System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + userMessage.getName());
