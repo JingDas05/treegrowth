@@ -1,7 +1,6 @@
 package com.treegrowth.service.iml;
 
 import com.treegrowth.dao.repository.UserRepository;
-import com.treegrowth.message.quene.cofiguration.Sender;
 import com.treegrowth.message.quene.message.UserMessage;
 import com.treegrowth.message.quene.message.UserMessagePayload;
 import com.treegrowth.model.entity.User;
@@ -37,8 +36,6 @@ public class UserServiceImpl implements UserService {
     private UserCell userCell;
     @Autowired
     private MailService mailService;
-    @Autowired
-    private Sender sender;
 
     @Override
     public UserDetailBasic create(User user) {
@@ -75,7 +72,6 @@ public class UserServiceImpl implements UserService {
         userMessage.setSendDate(new Date());
         userMessage.setPayload(userMessagePayload);
 
-        sender.sendMessage(userMessage);
         return userDetailBasic;
     }
 
