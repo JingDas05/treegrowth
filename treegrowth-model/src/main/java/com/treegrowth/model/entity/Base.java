@@ -1,6 +1,9 @@
 package com.treegrowth.model.entity;
 
 
+import com.google.common.collect.ImmutableList;
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.annotation.Generated;
@@ -32,14 +35,24 @@ public abstract class Base implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (o == this) return true;
-        if (!(o instanceof Base)) return false;
-        Base base = (Base) o;
-        return Objects.equals(getId(), base.getId());
+        return EqualsBuilder.reflectionEquals(this, o, ImmutableList.of("id"));
     }
 
+    @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return HashCodeBuilder.reflectionHashCode(this, ImmutableList.of("id"));
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (o == this) return true;
+//        if (!(o instanceof Base)) return false;
+//        Base base = (Base) o;
+//        return Objects.equals(getId(), base.getId());
+//    }
+//
+//    public int hashCode() {
+//        return Objects.hash(getId());
+//    }
 
 }
