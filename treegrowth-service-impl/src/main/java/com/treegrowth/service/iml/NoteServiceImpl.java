@@ -18,7 +18,7 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public Note getNote(Long noteId) {
-        return noteMapper.selectNote(noteId);
+    public Note getNote(String noteId) {
+        return noteMapper.selectNote(Long.parseLong(noteId));
     }
 }

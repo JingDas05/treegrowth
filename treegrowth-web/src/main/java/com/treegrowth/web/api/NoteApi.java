@@ -21,8 +21,8 @@ public class NoteApi {
     }
 
     @RequestMapping(value = "/{id}", method = GET)
-    public void noteDetail(@PathVariable(value = "id") Long noteId) {
-        noteService.getNote(noteId);
+    public Note noteDetail(@PathVariable(value = "id") String noteId) {
+        return noteService.getNote(noteId);
     }
 
 }

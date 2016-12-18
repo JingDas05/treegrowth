@@ -6,5 +6,5 @@ public interface NoteService {
 
     void createNote(Note note);
 
-    Note getNote(Long noteId);
+    Note getNote(String noteId);
 }
