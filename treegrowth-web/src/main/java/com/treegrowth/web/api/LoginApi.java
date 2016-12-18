@@ -32,11 +32,6 @@ public class LoginApi {
         return "index";
     }
 
-    @RequestMapping("/user/index")
-    public String userIndex() {
-        return "user/index";
-    }
-
     @RequestMapping("/login")
     public String login() {
         return "login";

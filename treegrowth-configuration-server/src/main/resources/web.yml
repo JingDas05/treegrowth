@@ -86,3 +86,8 @@ kafka:
   broker:
     address: localhost:9092
   topic: treegrowth
+
+qiniu:
+  ak: e7bw9vdW-XqO0zIZEaY78unLWnmygZjKX4R9mGhE
+  sk: 3yzExv9j2qHrfQAY4zBGoxbcOfz7lYiRovUlqvwd
+  bucket-name: treegrowth

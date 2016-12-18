@@ -1,6 +1,6 @@
 package com.treegrowth.service.iml;
 
-import com.treegrowth.dao.repository.UserRepository;
+import com.treegrowth.dao.jparepository.UserRepository;
 import com.treegrowth.message.quene.core.Sender;
 import com.treegrowth.message.quene.message.UserMessage;
 import com.treegrowth.model.entity.User;
@@ -15,7 +15,6 @@ import com.treegrowth.service.exception.NotFoundException;
 import com.treegrowth.service.iml.cell.UserCell;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.support.KafkaHeaders;
-import org.springframework.messaging.support.GenericMessage;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

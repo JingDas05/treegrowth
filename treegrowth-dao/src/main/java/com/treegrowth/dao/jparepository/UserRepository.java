@@ -1,4 +1,4 @@
-package com.treegrowth.dao.repository;
+package com.treegrowth.dao.jparepository;
 
 import com.treegrowth.model.entity.User;
 import org.springframework.data.repository.CrudRepository;

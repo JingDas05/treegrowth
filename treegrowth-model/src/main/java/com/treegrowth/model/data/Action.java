@@ -4,7 +4,7 @@ package com.treegrowth.model.data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
-public class Note extends Basic {
+public class Action extends Basic {
 
     private String name;
 

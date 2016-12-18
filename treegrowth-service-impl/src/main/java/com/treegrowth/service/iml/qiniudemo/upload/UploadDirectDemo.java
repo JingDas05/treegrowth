@@ -10,14 +10,14 @@ import java.io.IOException;
 public class UploadDirectDemo {
 
     //设置好账号的ACCESS_KEY和SECRET_KEY
-    private String ACCESS_KEY = "Access_Key";
-    private String SECRET_KEY = "Secret_Key";
+    private String ACCESS_KEY = "e7bw9vdW-XqO0zIZEaY78unLWnmygZjKX4R9mGhE";
+    private String SECRET_KEY = "3yzExv9j2qHrfQAY4zBGoxbcOfz7lYiRovUlqvwd";
     //要上传的空间
-    private String bucketname = "Bucket_Name";
+    private String bucketname = "treegrowth";
     //上传到七牛后保存的文件名
-    private String key = "my-java.png";
+    private String key = "test.png";
     //上传文件的路径
-    private String FilePath = "/.../...";
+    private String FilePath = "C:\\Users\\vanking\\Pictures\\qn_test.jpg";
 
     //密钥配置
     private Auth auth = Auth.create(ACCESS_KEY, SECRET_KEY);
@@ -31,8 +31,9 @@ public class UploadDirectDemo {
 
     public void upload() throws IOException {
         try {
+            String token = getUpToken();
             //调用put方法上传
-            Response res = uploadManager.put(FilePath, key, getUpToken());
+            Response res = uploadManager.put(FilePath, key, token);
             //打印返回的信息
             System.out.println(res.bodyString());
         } catch (QiniuException e) {

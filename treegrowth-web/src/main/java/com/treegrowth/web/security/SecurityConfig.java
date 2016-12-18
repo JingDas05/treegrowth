@@ -43,8 +43,6 @@ import java.util.List;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableOAuth2Client
 @EnableAuthorizationServer
-@Order(6)
-@EnableWebMvc
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Autowired

@@ -18,5 +18,4 @@ public interface UserService {
     UserDetailBasic get(String loginUserId, String userId);
 
     Optional<UserDetail> findByEmail(String email);
-
 }

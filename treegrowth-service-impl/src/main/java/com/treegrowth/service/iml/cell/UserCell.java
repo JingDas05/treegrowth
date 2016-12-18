@@ -1,10 +1,9 @@
 package com.treegrowth.service.iml.cell;
 
-import com.treegrowth.dao.repository.UserRepository;
+import com.treegrowth.dao.jparepository.UserRepository;
 import com.treegrowth.model.entity.User;
 import com.treegrowth.service.bo.UserDetailBasic;
 import com.treegrowth.service.exception.NotFoundException;
-import com.treegrowth.service.iml.cache.annotation.UserBasicCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Component;
